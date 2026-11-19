@@ -21,6 +21,9 @@ PyLaTeX objects, since doing so would replace the existing report templates.
   Centrifugal force reads an explicit input if present and otherwise says
   “Not specified,” since no computed centrifugal value exists in the current
   report payload.
+- `core/utils/codes/irc6_2017.py` initializes the braking-force components and
+  converts Newton-valued wheel loads to tonnes-force before the report formats
+  the result in kN. This resolves an N/A value for valid lane counts.
 - `chap5.py` includes a governing utilization chart in the overall design
   summary. The bars come from the same rows as Table 5.22. Missing member
   results are marked N/A; the chart does not invent an end diaphragm UR.

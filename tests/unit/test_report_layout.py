@@ -5,6 +5,7 @@ from osdagbridge.core.reports.charts import write_quantity_charts, write_utiliza
 from osdagbridge.core.reports.styles import repeat_longtable_headers
 from osdagbridge.core.utils.common import (
     KEY_LL_IRC_CLASS_A, KEY_LL_IRC_70R_TRACKED, KEY_SPAN,
+    KEY_WC_LD_LANE_TABLE_COUNT,
 )
 
 
@@ -23,11 +24,13 @@ def test_legacy_longtable_repeats_heading_without_repeating_caption():
 
 def test_live_loads_follow_vehicle_selection_and_separate_footway():
     tex = ch3_loads({KEY_SPAN: 24, KEY_LL_IRC_CLASS_A: True,
+                     KEY_WC_LD_LANE_TABLE_COUNT: 2,
                      KEY_LL_IRC_70R_TRACKED: False})
     assert "Vehicle Live Loads" in tex
     assert "Footway Live Load" in tex
     assert "Class A" in tex
     assert "Class 70R (Tracked)" not in tex
+    assert "Braking load (IRC 6) & 108.69 & kN" in tex
 
 
 def test_charts_keep_unavailable_quantities_explicit(tmp_path: Path):
